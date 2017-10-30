@@ -1,0 +1,59 @@
+Docker Hub is a registry service on the cloud that allows you to download Docker images that are built by other 
+communities. You can also upload your own Docker built images to Docker hub. 
+
+Pull command 
+docker pull jenkins //pulls jenkins image from public registry(Hub)
+run Command
+docker run -p 8080:8080 -p 50000:50000 jenkins //create instance of image(container)
+// if the image is not found in local system, it will download from docker hub.
+//-p used to map port 
+ie.image->container
+docker run hello-world
+
+docker run centos –it /bin/bash
+-it is used for interactive mode. when centos is up and running it runs bash shell.
+docker run -d centos // run container in detached mode
+
+docker images //list all the docker images installed on the system
+docker images -q // lists ids only of images
+docker rmi imageId //remove docker image
+docker inspect jenkins / see the details of jenkins images
+
+docker ps -a //list all the containers in the system, -a tells all lhe containers (exited too) on the system
+docker ps //list all the container currently running on the system
+docker history imageid // see all the command that we gave against given image
+eg. docker history centos
+
+docker stop containerId //stop docker container
+docker rm containerId	//delete container
+docker stats containerId //provide the statistics of container like cpu and memory utilization of the container
+docker attach containerId //attach container to the docker
+docker pause containerId //pause the processes in the container
+dokcer unpause containerId
+docker kill containerId /Kill the process in docker container
+docker restart containerId
+
+
+Docker Configurer
+service docker stop	//stop the docker daemon
+service docker start
+
+In order to build your own image you have to create docker file with instructions on how to build your images.
+docker build -t imagename:tagname dir
+
+
+Docker File commands
+FROM ->identifies where image come from?first line and can have multiple
+MAINTAINER-> author
+RUN->executes command while building a container
+CMD-> doesn't run during build but run when container starts
+EXPOSE-> expose container ports to host at runtime
+ENV-> sets environment variable to pass at runtime
+ADD->copies file(configuration/data) in to the container
+ENTRYPOINT->what to run to start command
+COPY
+VOLUME->
+USER->
+WORKDIR->Sets working directory for CMD, RUN and ENTRYPOINT commands
+ONBUILD->
+
