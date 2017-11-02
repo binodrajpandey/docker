@@ -1,0 +1,36 @@
+1. mongod
+2. mongo
+3. show dbs
+4. use test //create and/or use database
+5. db.createCollection("car") //create collection named car
+6. show collections
+
+7. db.car.insert({
+	make: 'Acura',
+	model: 'Legend',
+	year: '2010'
+}); 
+
+; is optional, and you can use single or double quote. Also, quotation mark in the key is optional
+
+8. db.car.find() //used to find all the document of the collection named "car"
+9. db.car.find().preety()
+10. db.car.update({
+	make: "Acura"
+	},
+	{
+	$set: {
+	make: "my-make"
+	}
+	})
+11. db.car.update({
+	make: "my-make"
+	},
+	{
+	$set: {
+	transmission: "my-mytransmission"
+	}
+	},
+	{$upsert: true})
+12. db.car.remove({make: "my-make"}) 
+13. for( var i=0; i<10; i++){db.car.insert({year: i})}
