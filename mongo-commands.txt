@@ -14,7 +14,9 @@
 ; is optional, and you can use single or double quote. Also, quotation mark in the key is optional
 
 8. db.car.find() //used to find all the document of the collection named "car"
-9. db.car.find().preety()
+9. db.car.find().preety() //it will show with more readable form
+11. db.car.find({make: "Acura"}).pretty() //find the documents with make Acura
+
 10. db.car.update({
 	make: "Acura"
 	},
@@ -34,3 +36,26 @@
 	{$upsert: true})
 12. db.car.remove({make: "my-make"}) 
 13. for( var i=0; i<10; i++){db.car.insert({year: i})}
+
+
+Data types in mongo dbs
+1. string {name: "john"}
+2. boolean {isUpdated: true}
+3 array {tags: ["tag1","tag2"]}
+4. objectid
+5. Number {year: 1990}
+6. Date {timestamp: ISODate("...")
+
+Other Datatypes:
+Buffer-> used for image, audio and video
+Mixed -> combines different types
+
+
+db.createCollection("student")
+db.student.insert({name: "binod",undergrad: false,units: 5, classes: ["science","math","english"]})
+db.student.insert({name: "hari",undergrad: true,units: 6, classes: ["management","IT","english"]})
+db.student.insert({name: "sabita",undergrad: false,units: 3, classes: ["HM","math","english"]})
+db.student.insert({name: "seema",undergrad: true,units: 2, classes: ["biology","math","english"]})
+db.student.find({units:{$gt:4}}).pretty()
+db.student.find({classes: {$in:["science","HM"]}}).pretty()
+db.student.find({classes: {$in:["science","HM"]}}).sort({units: 1}).pretty() //1 is used for ascending and -1 for descending
