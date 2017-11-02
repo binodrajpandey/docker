@@ -2,7 +2,8 @@
 2. mongo
 3. show dbs
 4. use test //create and/or use database
-5. db.createCollection("car") //create collection named car
+5. db.createCollection("car") //create collection named car, however you don't need to create collection,
+ it will be automatically created when inserting documents.
 6. show collections
 
 7. db.car.insert({
@@ -14,7 +15,7 @@
 ; is optional, and you can use single or double quote. Also, quotation mark in the key is optional
 
 8. db.car.find() //used to find all the document of the collection named "car"
-9. db.car.find().preety() //it will show with more readable, clean and well organized form
+9. db.car.find().pretty() //it will show with more readable, clean and well organized form
 11. db.car.find({make: "Acura"}).pretty() //find the documents with make Acura
 
 10. db.car.update({
@@ -34,8 +35,12 @@
 	}
 	},
 	{$upsert: true})
-12. db.car.remove({make: "my-make"}) 
+12. db.car.remove({make: "my-make"}) //if you donot pass argumen in remove method, all the documents will be deleted.
 13. for( var i=0; i<10; i++){db.car.insert({year: i})}
+14. db.stats() // to veiw the statistics of database;
+15. db.customer.drop() //drop collection named customer
+15. db.dropDatabase() //drops selected database.If you have not selected any database, 
+then it will delete default 'test' database.
 
 
 Data types in mongo dbs
@@ -52,11 +57,21 @@ Mixed -> combines different types
 
 
 db.createCollection("student")
-db.student.insert({name: "binod",undergrad: false,units: 5, classes: ["science","math","english"]})
-db.student.insert({name: "hari",undergrad: true,units: 6, classes: ["management","IT","english"]})
-db.student.insert({name: "sabita",undergrad: false,units: 3, classes: ["HM","math","english"]})
-db.student.insert({name: "seema",undergrad: true,units: 2, classes: ["biology","math","english"]})
-db.student.find({units:{$gt:4}}).pretty()
+1. db.student.insert({name: "binod",undergrad: false,units: 5, classes: ["science","math","english"]})
+	db.student.insert({name: "hari",undergrad: true,units: 6, classes: ["management","IT","english"]})
+	db.student.insert({name: "sabita",undergrad: false,units: 3, classes: ["HM","math","english"]})
+	db.student.insert({name: "seema",undergrad: true,units: 2, classes: ["biology","math","english"]})
+	//or you can pass array of document as an argument of insert method.
+2. equality operator
+db.student.find({units:{$gt:4}}).pretty() //similary you can use gte,lt,lte.ne (not equal)
+3. in
 db.student.find({classes: {$in:["science","HM"]}}).pretty()
-db.student.find({classes: {$in:["science","HM"]}}).sort({units: 1}).pretty() //1 is used for ascending and -1 for descending
-db.student.find({classes: {$in:["science","HM"]}}).sort({units: 1}).limit(1).pretty()
+4. sort 
+db.student.find({classes: {$in:["science","HM"]}}).sort({units: 1}).pretty()
+ //1 is used for ascending and -1 for descending
+5. limit
+ db.student.find({classes: {$in:["science","HM"]}}).sort({units: 1}).limit(1).pretty()
+6. "and" and "or"
+db.student.find({$and:[{units:{$gt:2}},{units:{$lt:6}}]}).pretty() //In the same way, you can use or operator .
+7. Skip()
+db.student.find().limit(1).skip(1) //It will show second document. The default argument of skip method is 0.
