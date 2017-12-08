@@ -1,3 +1,6 @@
 vagrant init bento/ubuntu-16.10
 vagrant up
 vagrant ssh
+sudo service mongodb start
+sudo mongod --port 27118 --dpath .
+mongo --port 27118(different from default port)
