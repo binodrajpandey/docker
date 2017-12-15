@@ -12,31 +12,21 @@
 	year: '2010'
 }); 
 
-; is optional, and you can use single or double quote. Also, quotation mark in the key is optional
+semicolon(;) is optional, and you can use single or double quote. Also, quotation mark in the key is optional
 
 8. db.car.find() //used to find all the document of the collection named "car"
 9. db.car.find().pretty() //it will show with more readable, clean and well organized form
 11. db.car.find({make: "Acura"}).pretty() //find the documents with make Acura
 
-10. db.car.update({
-	make: "Acura"
-	},
-	{
-	$set: {
-	make: "my-make"
-	}
-	})
-11. db.car.update({
-	make: "my-make"
-	},
-	{
-	$set: {
-	transmission: "my-mytransmission"
-	}
-	},
+10. db.car.update(
+	{make: "Acura"},
+	{$set: {make: "my-make"	}})
+11. db.car.update(
+	{make: "my-make"},
+	{$set: {transmission: "my-mytransmission"}},
 	{$upsert: true})
-12. db.car.remove({make: "my-make"}) //if you donot pass argumen in remove method, all the documents will be deleted.
-13. for( var i=0; i<10; i++){db.car.insert({year: i})}
+12. db.car.remove({make: "my-make"}) //if you do not pass any argument in remove method, all the documents will be deleted.
+13. for( var i=0; i<10; i++){db.car.insert({year: i})} //10 documents will be inserted
 14. db.stats() // to veiw the statistics of database;
 15. db.customer.drop() //drop collection named customer
 15. db.dropDatabase() //drops selected database.If you have not selected any database, 
@@ -46,7 +36,7 @@ then it will delete default 'test' database.
 Data types in mongo dbs
 1. string {name: "john"}
 2. boolean {isUpdated: true}
-3 array {tags: ["tag1","tag2"]}
+3. array {tags: ["tag1","tag2"]}
 4. objectid
 5. Number {year: 1990}
 6. Date {timestamp: ISODate("...")
@@ -75,3 +65,8 @@ db.student.find({classes: {$in:["science","HM"]}}).sort({units: 1}).pretty()
 db.student.find({$and:[{units:{$gt:2}},{units:{$lt:6}}]}).pretty() //In the same way, you can use or operator .
 7. Skip()
 db.student.find().limit(1).skip(1) //It will show second document. The default argument of skip method is 0.
+8. create index 
+db.student.ensureIndex({units:1})
+ //here units is the field on which we want to create index, and 1 is for ascending order.
+9. Aggregate operations
+db.student.aggregate([{$group: {_id: "$undergrad",total_unit: {$sum: "$units"}}}]) 
