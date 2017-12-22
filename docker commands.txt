@@ -14,6 +14,10 @@ docker ps -a
 to stop docker container use 
 docker stop <image_name>
 
+In order to run command inside running container use exec command 
+Example:
+docker exec conatainerId cat /etc/*release*
+
 docker run -p 8080:8080 -p 50000:50000 jenkins //create instance of image(container)
 // if the image is not found in local system, it will download from docker hub.
 //-p used to map port 
@@ -26,7 +30,7 @@ docker run -d centos // run container in detached mode
 
 docker images //list all the docker images installed on the system
 docker images -q // lists ids only of images
-docker rmi imageId //remove docker image
+docker rmi imageId //remove docker image. before you remove image , you have to make sure that you have removed associated conainer.
 docker inspect jenkins / see the details of jenkins images
 
 docker ps -a //list all the containers in the system, -a tells all lhe containers (exited too) on the system
@@ -35,7 +39,7 @@ docker history imageid // see all the command that we gave against given image
 eg. docker history centos
 
 docker stop containerId //stop docker container
-docker rm containerId	//delete container
+docker rm containerId1 containerid2 containerid3 //delete container with those ids
 docker stats containerId //provide the statistics of container like cpu and memory utilization of the container
 docker attach containerId //attach container to the docker
 docker pause containerId //pause the processes in the container
