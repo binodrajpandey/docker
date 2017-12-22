@@ -6,11 +6,11 @@
 `sudo apt-get remove docker docker-engine docker.io`
 4. `sudo apt-get update`
 5. Install other dependent packages using following command</br>
-`sudo apt-get install \`
-   ` apt-transport-https \`
-   ` ca-certificates \`
-    `curl \`
-    `software-properties-common``
+`sudo apt-get install \`</br>
+   ` apt-transport-https \`</br>
+   ` ca-certificates \`</br>
+    `curl \`</br>
+    `software-properties-common`</br>
  6. Add Docker's official GPG key:   
 
 ` curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -`
@@ -30,3 +30,6 @@
 `sudo apt-get install docker-ce`
 11. Docker is installed. Now check using command
 `sudo docker run hello-world`
+
+ Docker Hub is a registry service on the cloud that allows you to download Docker images that are built by other 
+communities. You can also upload your own Docker built images to Docker hub.
