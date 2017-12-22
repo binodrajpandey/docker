@@ -1,24 +1,7 @@
-Docker Hub is a registry service on the cloud that allows you to download Docker images that are built by other 
-communities. You can also upload your own Docker built images to Docker hub. 
 
-1. docker pull jenkins //pulls jenkins image from public registry(Hub)
 
-2. docker run -it centos bash //open bash of centos, you can use cat /etc/*release* to verify the system
-i-> input(map standard input from host to docker container) by default docker container doesnot listen standard input.
-eg. docker run -i app
-use exit command to exit from centos system.
-Now test following command
-docker run -d centos sleep 20 where -d is used to run it in the background now test
-docker ps
-after 20 second run same command 
-docker ps
-docker ps -a 
-to stop docker container use 
-docker stop <image_name>
 
-In order to run command inside running container use exec command 
-Example:
-docker exec conatainerId cat /etc/*release*
+
 4. Port Mapping
 docker run -p 8080:5000  jenkins //create instance of image(container)
 where first argument(8080) is of your host port
@@ -39,8 +22,6 @@ docker images -q // lists ids only of images
 docker rmi imageId //remove docker image. before you remove image , you have to make sure that you have removed associated conainer.
 docker inspect jenkins / see the details of jenkins images
 
-docker ps -a //list all the containers in the system, -a tells all lhe containers (exited too) on the system
-docker ps //list all the container currently running on the system
 docker history imageid // see all the command that we gave against given image
 eg. docker history centos
 
