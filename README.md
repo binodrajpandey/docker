@@ -33,3 +33,9 @@
 
  Docker Hub is a registry service on the cloud that allows you to download Docker images that are built by other 
 communities. You can also upload your own Docker built images to Docker hub.
+
+### Some Docker Commsnds
+1. <b>docker pull jenkins<b>
+-This command will downloads the jenkins image from docker hub.
+   2. <b>docker run -i jenkins sleep 2000 </b>
+   -This command will firts search jenkins in local system, if not found will download from the docker registry. -i indicates that it will interact with standard input system of the host. when the image runs, it will hold 2000 seconds.
