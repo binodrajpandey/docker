@@ -45,5 +45,13 @@ communities. You can also upload your own Docker built images to Docker hub.
  - It will run centos in detach mode.
 5. `docker attach centosImageId`
  - This will again attach container
-6. ` docker exec conatainerId cat /etc/*release* `
+6. ` docker exec conatainerId cat /etc/*release* `</br>
 -run command  cat inside running container
+7. `docker ps `</br>
+list all the container currently running on the system
+8.  `docker ps -a ` </br>
+-a tells all lhe containers (exited too) on the system
+9. `docker stop <image_name>`
+ stop docker container 
+
+
