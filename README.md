@@ -39,3 +39,11 @@ communities. You can also upload your own Docker built images to Docker hub.
 -This command will downloads the jenkins image from docker hub.
 2. `docker run -i jenkins sleep 2000 ` <br>
    -This command will firts search jenkins in local system, if not found will download from the docker registry. -i indicates that it will interact with standard input system of the host. when the image runs, it will hold 2000 seconds.
+3. `docker run -it centos bash` </br>
+  -It will run centos with interactive mode ie. open bash of centos, you can use cat /etc/*release* to verify the system
+4. `docker run -d centos `
+ - It will run centos in detach mode.
+5. `docker attach centosImageId`
+ - This will again attach container
+6. ` docker exec conatainerId cat /etc/*release* `
+-run command  cat inside running container
