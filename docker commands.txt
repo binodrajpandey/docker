@@ -4,6 +4,8 @@ communities. You can also upload your own Docker built images to Docker hub.
 1. docker pull jenkins //pulls jenkins image from public registry(Hub)
 
 2. docker run -it centos bash //open bash of centos, you can use cat /etc/*release* to verify the system
+i-> input(map standard input from host to docker container) by default docker container doesnot listen standard input.
+eg. docker run -i app
 use exit command to exit from centos system.
 Now test following command
 docker run -d centos sleep 20 where -d is used to run it in the background now test
@@ -17,17 +19,21 @@ docker stop <image_name>
 In order to run command inside running container use exec command 
 Example:
 docker exec conatainerId cat /etc/*release*
-
-docker run -p 8080:8080 -p 50000:50000 jenkins //create instance of image(container)
+4. Port Mapping
+docker run -p 8080:5000  jenkins //create instance of image(container)
+where first argument(8080) is of your host port
+and second argument(5000) is for container port
 // if the image is not found in local system, it will download from docker hub.
 //-p used to map port 
 ie.image->container
 docker run hello-world
-
+5. docker volume mapping
+docker run -v /opt/datadir:/var/lib/mysql mysql
+where /var/lib/mysql is default directory of docker container to store its data.
 docker run centos –it /bin/bash
 -it is used for interactive mode. when centos is up and running it runs bash shell.
 docker run -d centos // run container in detached mode
-
+6. docker attach containerId
 docker images //list all the docker images installed on the system
 docker images -q // lists ids only of images
 docker rmi imageId //remove docker image. before you remove image , you have to make sure that you have removed associated conainer.
