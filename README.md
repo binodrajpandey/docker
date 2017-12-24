@@ -105,6 +105,25 @@ list all the container currently running on the system
 ->Sets working directory for CMD, RUN and ENTRYPOINT commands
 13. `ONBUILD`
 
+### docker compose
+1. `docker-compose up`
+2. `docker-compose stop`
+3. `docker-compose down` 
+-removes container permanently
+version: '3'
+services:
+  mysql:
+      image: "mysql"
+      environment:
+	- MYSQL_ROOT_PASSWORD=password
+     volumes:
+	- /root/mydir:/var/mysql/data
+  web:
+    image: "wordpress"
+    ports:
+      - "8080:80"
+    environment:
+            - WORDPRESS_DB_PASSWORD=password
 
 
 
