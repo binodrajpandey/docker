@@ -124,6 +124,13 @@ services:
       - "8080:80"
     environment:
             - WORDPRESS_DB_PASSWORD=password
+    deploy:
+	replicas: 5
 
-
+### Docker network
+`docker network ls`
+`docker run ubuntu --network=host`
+bridge -default network docker use (private internal network created by docker in a series of 172.17.x.x)
+none-
+host
 
