@@ -53,28 +53,31 @@ list all the container currently running on the system
 -a tells all lhe containers (exited too) on the system
 9. `docker stop <image_name>`</br>
  stop docker container 
- 10. Docker port mapping from docker container to docker host
- `docker run -p 8080:8080 jenkins`</br>
+10.  `docker run -p 8080:8080 jenkins`</br>
  here first port value is for your docker host and second is for docker container.
- 11. Docker volume mapping </br>
- `docker run -v /opt/datadir:/var/lib/mysql mysql`
- 12. `docker images -q` </br>
+11.  `docker run -v /opt/datadir:/var/lib/mysql mysql` </br>
+ - used to map volume
+12. `docker images -q` </br>
  where -q is used to ists ids only of images
- 13. `docker rm containerId1 containerid2 containerid3`
- 14. `docker rmi imageId`
- 15. `docker inspect jenkins`
- 16. `docker history centos` -see all the command that we gave against given image
- 17. `ocker stats containerId` -provide the statistics of container like cpu and memory utilization of the container
- 18.docker pause containerId //pause the processes in the container
-dokcer unpause containerId
-docker kill containerId /Kill the process in docker container
-docker restart containerId
-ocker Configurer
-service docker stop	//stop the docker daemon
-service docker start
+13. `docker rm containerId1 containerid2 containerid3`
+14. `docker rmi imageId`
+15. `docker inspect jenkins`
+16. `docker history centos` </br>
+ -see all the command that we gave against given image
+17. `ocker stats containerId` </br>
+ -provide the statistics of container like cpu and memory utilization of the container
+18.`docker pause containerId `
+ -pause the processes in the container
+19. `dokcer unpause containerId`</br>
+20. `docker kill containerId`
+-kill the process in docker container
+21. `docker restart containerId`
+22. `service docker stop`</br>
+-stop the docker daemon
+23.`service docker start`
+24. `docker build -t imagename:tagname dir`
+-In order to build your own image you have to create docker file with instructions on how to build your images.
 
-In order to build your own image you have to create docker file with instructions on how to build your images.
-docker build -t imagename:tagname dir
 
 
 Docker File commands
