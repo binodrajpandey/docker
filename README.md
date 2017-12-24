@@ -75,25 +75,35 @@ list all the container currently running on the system
 22. `service docker stop`</br>
 -stop the docker daemon
 23.`service docker start`
-24. `docker build -t imagename:tagname dir`
+24. `docker build -t acc_namem/imagename:tagname dir`
 -In order to build your own image you have to create docker file with instructions on how to build your images.
 
+25. `docker login`
+26.`docker push imagename`
 
-
-Docker File commands
-FROM ->identifies where image come from?first line and can have multiple
-MAINTAINER-> author
-RUN->executes command while building a container
-CMD-> doesn't run during build but run when container starts
-EXPOSE-> expose container ports to host at runtime
-ENV-> sets environment variable to pass at runtime
-ADD->copies file(configuration/data) in to the container
-ENTRYPOINT->what to run to start command
-COPY
-VOLUME->
-USER->
-WORKDIR->Sets working directory for CMD, RUN and ENTRYPOINT commands
-ONBUILD->
+### Docker File commands
+1. `FROM`</br>
+->identifies where image come from?first line and can have multiple
+2. `MAINTAINER`
+-> author
+3.`RUN`
+->executes command while building a container
+4. `CMD`</br>
+-> doesn't run during build but run when container starts
+5. `EXPOSE`</br>
+-> expose container ports to host at runtime
+6. `ENV`</br>
+-> sets environment variable to pass at runtime
+7. `ADD`</br>
+->copies file(configuration/data) in to the container
+8. `ENTRYPOINT`
+->what to run to start command
+9. `COPY`
+10. `VOLUME`
+11. `USER`
+12. `WORKDIR`</br>
+->Sets working directory for CMD, RUN and ENTRYPOINT commands
+13. `ONBUILD`
 
 
 
