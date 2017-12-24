@@ -34,7 +34,7 @@
  Docker Hub is a registry service on the cloud that allows you to download Docker images that are built by other 
 communities. You can also upload your own Docker built images to Docker hub.
 
-### Some Docker Commsnds
+### Some Docker Commands
 1. `docker pull jenkins `</br>
 -This command will downloads the jenkins image from docker hub.
 2. `docker run -i jenkins sleep 2000 ` <br>
@@ -51,7 +51,47 @@ communities. You can also upload your own Docker built images to Docker hub.
 list all the container currently running on the system
 8.  `docker ps -a ` </br>
 -a tells all lhe containers (exited too) on the system
-9. `docker stop <image_name>`
+9. `docker stop <image_name>`</br>
  stop docker container 
+ 10. Docker port mapping from docker container to docker host
+ `docker run -p 8080:8080 jenkins`</br>
+ here first port value is for your docker host and second is for docker container.
+ 11. Docker volume mapping </br>
+ `docker run -v /opt/datadir:/var/lib/mysql mysql`
+ 12. `docker images -q` </br>
+ where -q is used to ists ids only of images
+ 13. `docker rm containerId1 containerid2 containerid3`
+ 14. `docker rmi imageId`
+ 15. `docker inspect jenkins`
+ 16. `docker history centos` -see all the command that we gave against given image
+ 17. `ocker stats containerId` -provide the statistics of container like cpu and memory utilization of the container
+ 18.docker pause containerId //pause the processes in the container
+dokcer unpause containerId
+docker kill containerId /Kill the process in docker container
+docker restart containerId
+ocker Configurer
+service docker stop	//stop the docker daemon
+service docker start
+
+In order to build your own image you have to create docker file with instructions on how to build your images.
+docker build -t imagename:tagname dir
+
+
+Docker File commands
+FROM ->identifies where image come from?first line and can have multiple
+MAINTAINER-> author
+RUN->executes command while building a container
+CMD-> doesn't run during build but run when container starts
+EXPOSE-> expose container ports to host at runtime
+ENV-> sets environment variable to pass at runtime
+ADD->copies file(configuration/data) in to the container
+ENTRYPOINT->what to run to start command
+COPY
+VOLUME->
+USER->
+WORKDIR->Sets working directory for CMD, RUN and ENTRYPOINT commands
+ONBUILD->
+
+
 
 
