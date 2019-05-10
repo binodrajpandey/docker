@@ -78,8 +78,10 @@ list all the container currently running on the system
 24. `docker build -t acc_namem/imagename:tagname dir`
 -In order to build your own image you have to create docker file with instructions on how to build your images.
 
-25. `docker login`
-26.`docker push imagename`
+25. `docker login`</br>
+26.`docker push imagename`</br>
+27. docker rename oldname newname</br>
+-Rename container name from oldname to newname
 
 ### Docker File commands
 1. `FROM`</br>
@@ -98,8 +100,8 @@ list all the container currently running on the system
 ->copies file(configuration/data) in to the container
 8. `ENTRYPOINT`
 ->what to run to start command
-9. `COPY`
-10. `VOLUME`
+9. `COPY` Copies file
+10. `VOLUME` 
 11. `USER`
 12. `WORKDIR`</br>
 ->Sets working directory for CMD, RUN and ENTRYPOINT commands
@@ -133,4 +135,22 @@ services:
 bridge -default network docker use (private internal network created by docker in a series of 172.17.x.x)
 none-
 host
+
+## How to Run Mysql
+`docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -v ~/datadir:/var/lib/mysql -h localhost mysql` </br>
+Here --name is used to give name of running instance </br>
+-e stands for environment </br>
+-d used for detatched mode run</br>
+-v used for volume mapping</br>
+After running instance, if you want to login, hit the following command.
+`docker exec -it mysql bash`</br>
+`mysql -u root -ppassword`</br>
+
+##  How to Run cassandra
+ `docker run -v ~/project/cassandra/datadir:var/lib/cassandra -d --name cassandra cassandra ` <br>
+ `docker exec -it cassandra bash` </br>
+ `cqlsh -u cassandra -pcassandra` </br>
+ Now you can create keyspace like:</br>
+ `create keyspace usergram_test with replication={'class':'NetworkTopologyStrategy','datacenter1':'3'} and durable_writes=true;` </br>
+
 
