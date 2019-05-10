@@ -107,34 +107,6 @@ list all the container currently running on the system
 ->Sets working directory for CMD, RUN and ENTRYPOINT commands
 13. `ONBUILD`
 
-### docker compose
-1. `docker-compose up`
-2. `docker-compose stop`
-3. `docker-compose down` 
--removes container permanently
-version: '3'
-services:
-  mysql:
-      image: "mysql"
-      environment:
-	- MYSQL_ROOT_PASSWORD=password
-     volumes:
-	- /root/mydir:/var/mysql/data
-  web:
-    image: "wordpress"
-    ports:
-      - "8080:80"
-    environment:
-            - WORDPRESS_DB_PASSWORD=password
-    deploy:
-	replicas: 5
-
-### Docker network
-`docker network ls`
-`docker run ubuntu --network=host`
-bridge -default network docker use (private internal network created by docker in a series of 172.17.x.x)
-none-
-host
 
 ## How to Run Mysql
 `docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -v ~/datadir:/var/lib/mysql -h localhost mysql` </br>
@@ -154,3 +126,38 @@ After running instance, if you want to login, hit the following command.
  `create keyspace usergram_test with replication={'class':'NetworkTopologyStrategy','datacenter1':'3'} and durable_writes=true;` </br>
 
 
+### docker compose
+1. `docker-compose up`</br>
+2. `docker-compose stop`</br>
+3. `docker-compose down` </br>
+-removes container permanently. </br>
+Example of dockercompose.yml file looks like:
+```
+version: '3'
+services:
+  mysql:
+      image: "mysql"
+      environment:
+	- MYSQL_ROOT_PASSWORD=password
+     volumes:
+	- /root/mydir:/var/mysql/data
+  web:
+    image: "wordpress"
+    ports:
+      - "8080:80"
+    environment:
+            - WORDPRESS_DB_PASSWORD=password
+    deploy:
+	replicas: 5
+	
+	
+```
+
+
+### Docker network
+- There are three types of network</br>
+1. bridge -this is the default network  which is private internal network created by docker in a series of 172.17.x.x
+2. host - same network of docker host
+3. none 
+`docker network ls`
+`docker run ubuntu --network=host`
