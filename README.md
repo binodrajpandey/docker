@@ -51,6 +51,9 @@ After running instance, if you want to login, hit the following command.
  Now you can create keyspace like:</br>
  `create keyspace usergram_test with replication={'class':'NetworkTopologyStrategy','datacenter1':'3'} and durable_writes=true;` </br>
 
+## How to Link containers
+Suppose we have a project image called *batch* and it has a dependency of mysql and cassandra containers. To link those containers:
+` docker run --link mysql --link cassandra -d --name batch batch`
 
 ### docker compose
 1. `docker-compose up`</br>
