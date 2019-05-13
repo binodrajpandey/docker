@@ -81,12 +81,3 @@ services:
 	
 	
 ```
-
-
-### Docker network
-- There are three types of network</br>
-1. bridge -this is the default network  which is private internal network created by docker in a series of 172.17.x.x
-2. host - same network of docker host
-3. none 
-`docker network ls`
-`docker run ubuntu --network=host`
