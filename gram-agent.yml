@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+  redis:
+   container_name: redis
+   image: redis:5.0
+   ports:
+     - 6379:6379
+  cassandra: 
+    container_name: cassandra
+    image: cassandra
+    environment:
+      CASSANDRA_USER: user
+      CASSANDRA_PASS: password
+    ports: 
+      - 9042:9042
+      - 9160:9160
+    volumes: 
+     - "~/datadir/volume/cassandra:/var/lib/cassandra"
+  mysql: 
+    container_name: mysql
+    environment: 
+    -  MYSQL_DATABASE
+    - MYSQL_USER
+    - MYSQL_PASSWORD
+    - MYSQL_ROOT_PASSWORD
+    image: mysql:5.7
+    ports: 
+      - "3306:3306"
+    restart: always
+    volumes: 
+      - "~/datadir/volume/mysql:/var/lib/mysql"
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    environment:
+    - LANG=C.UTF-8
+  rabbitmq:
+    container_name: rabbit 
+    environment: 
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_VHOST: /
+      RABBITMQ_ERLANG_COOKIE: SWQOKODSQALRPCLNMEQG
+    hostname: rabbitmq
+    image: "rabbitmq:3-management"
+    labels: 
+      NAME: rabbitmq1
+    ports: 
+      - "15672:15672"
+      - "5672:5672"
+    volumes: 
+      - "~/rabbit/data/dir:/var/lib/rabbitmq"
+    
+ 
