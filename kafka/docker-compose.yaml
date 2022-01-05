@@ -1,0 +1,26 @@
+version: "3.5"
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    hostname: zookeeper
+    ports:
+    - 2181:2181
+    volumes:
+     - "./data/zookeeper:/opt/zookeeper-3.4.13/data"
+
+  kafka:
+    image: wurstmeister/kafka
+    command: [start-kafka.sh]
+    hostname: kafka-stream
+    environment:
+      KAFKA_CREATE_TOPICS: "streams-plaintext-input:1:1,streams-pipe-output:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ADVERTISED_PORT: 9092
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./data/kafka:/kafka/kafka-logs-kafka-stream"
